@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Are you my friend?</title>
+</head>
+
+<body>
+    <h1>How much do you know me?</h1>
+    <p><i>Answer the following questions to check how much do you know Luna.</i></p>
+    <form>
+
+        <label for="question1"> 1. Does Luna have a boyfriend?</label>
+        <select name="question1" id="question1" class="question">
+            <option value="True">Yes</option>
+            <option value="False">No</option>
+        </select>
+        <br>
+        <label for="question2"> 2. Which is Luna's cat's name?</label>
+        <select name="question2" id="question2" class="question">
+            <option value="Oreo">Oreo</option>
+            <option value="Bubu">Bubu</option>
+             <option value="Miemie">Miemie</option>
+            <option value="Faith">Faith</option>
+        </select>
+        <br>
+        <label for="question3"> 3. Who is Luna's favourite professor?</label>
+        <select name="question3" id="question3" class="question">
+            <option value="Kim">Kim</option>
+            <option value="Cairo">Cairo</option>
+             <option value="Zeven">Zeven</option>
+            <option value="Peter">Peter</option>
+        </select>
+        <br>
+
+        <label for="question4"> 4. Is Luna a pregnancy?</label>
+        <select name="question4" id="question4" class="question">
+            <option value="Yes">True</option>
+            <option value="No">False</option>
+        </select>
+        <br>
+
+        <label for="question5"> 5. Which is Luna's favoutite drink?</label>
+        <select name="question5" id="question5" class="question">
+            <option value="Milk">Milk</option>
+            <option value="Milktea">Milktea</option>
+             <option value="Soymilk">Soymilk</option>
+            <option value="Juice">Juice</option>
+        </select>
+       <br>
+        <br>
+
+        <button type="button" id="submitAnswers">Submit Answers</button>
+
+    </form>
+
+    <br>
+
+    <div id="outputText"></div>
+
+
+        <script>
+            /* Comment: Enter code below */
+            function checkAnswers() {
+                var counter = 0;
+                var answerRatio = 0;
+                var getResponse = document.getElementsByClassName("question");
+                //console.log(getResponse[0].value); To view the value of each individual element
+                var output = document.getElementById("outputText");
+                if (getResponse[0].value == answers[0]) {
+                    counter = counter + 1;
+                }
+                if (getResponse[1].value == answers[1]) {
+                    counter++;
+                }
+                if (getResponse[2].value == answers[2]) {
+                    counter++;
+                }
+                if (getResponse[3].value == answers[3]) {
+                    counter++;
+                }
+                if (getResponse[4].value == answers[4]) {
+                    counter++;
+                }
+                answerRatio = (counter / getResponse.length) * 100;
+                console.log("Percent of questions right: " + answerRatio)
+
+                if (answerRatio == 60) {
+                    output.innerHTML = "You are a true friend!";
+                }
+                if (answerRatio == 40) {
+                    output.innerHTML = "You are a good friend!";
+                }
+               
+            
+                if (answerRatio < 40) {
+                    output.innerHTML = "Do you really know Luna!!"
+                }
+            }
+            var answers = ["Yes", "Miemie", "Zeven", "True", "Milktea","Blue"];
+            var getButton = document.getElementById("submitAnswers");
+            getButton.addEventListener("click", checkAnswers);
+
+        </script>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>DOG AGE CAlCULATOR</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>CALCULATE YOUR DOG'S AGE INTO HUMANS'</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <img src="assets/dog.JPG" alt="Dog" class="small-dog">
+            </div>
+            <div class="col-xs-12 col-md-6">If you own a dog, you've heard this rule: 1 year for Fido equals 7 years for you. Turns out, the math isn't that simple. Dogs mature more quickly than we do early on. So the first year of your fuzzy friend's life is equal to about 15 human years.
+            </div>
+        </div>
+
+
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form>
+                        <label for="dogAge">Enter your dog's age (month)</label>
+                        <input type="number" name="property" id="dogAge" value="0">
+                        <br><br>
+                        <button type="button" id="submitButton">Enter Age</button>
+
+                    </form>
+
+                    <div id="outputNum"></div>
+
+                    <script>
+                        function checkAge() {
+                            var output = document.getElementById("outputNum");
+                            var dogAge = document.getElementById("dogAge").value;
+                            var humanAge = dogAge * 7;
+                            output.innerHTML = "Your dog's age is" + " " + humanAge + " " + "human age";
+                        }
+                        var getButton = document.getElementById("submitButton");
+                        getButton.addEventListener("click", checkAge);
+
+                    </script>
+
+                </div>
+
+
+
+                <!-- Latest compiled and minified JavaScript -->
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
