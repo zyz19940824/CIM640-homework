@@ -25,10 +25,7 @@ var bear;
 var dinsour;
 
 
-
-var counter = 0;
-
-var directionY = false;
+var bugs = [];
 
 function preload() {
     bgImage = loadImage("assets/christmas.jpg");
@@ -42,6 +39,11 @@ function preload() {
 
 function setup() {
     createCanvas(800, 400);
+
+    for (var i = 0; i < 50; i++) {
+        bugs.push(new Jitter());
+    }
+
     centerX = width / 2;
     centerY = height / 2;
 
@@ -63,6 +65,13 @@ function draw() {
     background(bgColor);
 
     image(currentBgImage, 0, 0, 800, 500);
+    fill(255);
+    noStroke();
+
+    for (var i = 0; i < bugs.length; i++) {
+        bugs[i].move();
+        bugs[i].display();
+    }
 
     //console.log("mouseX: " + mouseX + " mouseY: " + mouseY);
     centerX = mouseX;
@@ -117,11 +126,20 @@ function draw() {
     noFill();
     ellipse(hitZone1X, hitZone1Y, 10, 10);
 
+    stroke(0);
+    strokeWeight(1);
+    noFill();
+    ellipse(hitZone2X, hitZone2Y, 10, 10);
+
     var hitZoneDist = dist(hitZoneX, hitZoneY, mouseX, mouseY);
     console.log("hitZoneDist: " + hitZoneDist);
 
     var hitZoneDist1 = dist(hitZone1X, hitZone1Y, mouseX, mouseY);
     console.log("hitZoneDist: " + hitZoneDist);
+
+    var hitZoneDist2 = dist(hitZone2X, hitZone2Y, mouseX, mouseY);
+    console.log("hitZoneDist: " + hitZoneDist);
+
 
 
     if (hitZoneDist <= 5 && currentBgImage == bgImage) {
@@ -133,12 +151,6 @@ function draw() {
         console.log("We are totally in the zone!");
         image(bear, 50, 50);
     }
- if (hitZoneDist <= 5 && currentBgImage == bgImage3) {
-        console.log("We are totally in the zone!");
-        image(glasses, 50, 50);
-    }
-
-
 
     if (hitZoneDist1 <= 5 && currentBgImage == bgImage) {
         console.log("We are totally in the zone!");
@@ -149,7 +161,31 @@ function draw() {
         image(dinsour, 50, 50);
     }
 
+    if (hitZoneDist2 <= 5 && currentBgImage == bgImage) {
+        console.log("We are totally in the zone!");
+        frameRate(5);
+
+        push();
+
+        scale(random(20.0));
+        noStroke();
+        fill("red");
+        ellipse(centerX, centerY, 100, 100);
+    }
 }
+if (hitZoneDist2 <= 10 && currentBgImage == bgImage2) {
+    console.log("We are totally in the zone!");
+    frameRate(5);
+
+    push();
+
+    scale(random(20.0));
+    noStroke();
+    fill("#723a2d");
+    ellipse(centerX, centerY, 100, 100);
+}
+
+
 
 function mousePressed() {
     bgColor = color(0, 255, 0);
@@ -162,4 +198,20 @@ function changeBgFunction() {
 
 function changeBgFunction2() {
     currentBgImage = bgImage;
+}
+
+function Jitter() {
+    this.x = random(width);
+    this.y = random(height);
+    this.diameter = random(10, 30);
+    this.speed = 1;
+
+    this.move = function () {
+        this.x += random(-this.speed, this.speed);
+        this.y += random(-this.speed, this.speed);
+    };
+
+    this.display = function () {
+        ellipse(this.x, this.y, this.diameter, this.diameter);
+    };
 }
